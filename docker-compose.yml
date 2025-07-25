@@ -5,7 +5,7 @@ services:
     environment:
       POSTGRES_USER: ynnov
       POSTGRES_PASSWORD: Ynn0v@2025#Fleet
-      POSTGRES_DB: maxvision_lock_db
+      POSTGRES_DB: balises_db
     ports:
       - "5432:5432"
     volumes:
@@ -27,7 +27,7 @@ services:
       - SPRING_PROFILES_ACTIVE=prod
       - SERVER_PORT=8080
       - MVGATEWAY_SERVERS_0_PORT=8910
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-balises:5432/maxvision_lock_db
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-balises:5432/balises_db
       - SPRING_DATASOURCE_USERNAME=ynnov
       - SPRING_DATASOURCE_PASSWORD=Ynn0v@2025#Fleet
     restart: unless-stopped
