@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  lock-sdk-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: sdkmaxvision1:latest
+    container_name: sdkmaxvision1
+    ports:
+      - "8080:8080"  # REST API port
+      - "8910:8910"  # Lock SDK port
+    volumes:
+      - ./logs:/app/logs
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    restart: unless-stopped
+    networks:
+      - lock-network
+
+networks:
+  lock-network:
+    driver: bridge 

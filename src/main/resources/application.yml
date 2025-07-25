@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: lock-sdk-demo
+
+mvgateway:
+  servers:
+    - port: 8910
+      encrypt: true
+      name: maxvision   # Do not modify
+
+logging:
+  config: classpath:logback-spring.xml 
