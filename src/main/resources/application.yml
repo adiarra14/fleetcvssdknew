@@ -24,6 +24,17 @@ mvgateway:
     - port: 8910
       encrypt: true
       name: maxvision   # Do not modify
+      host: 0.0.0.0
+      ssl:
+        enabled: false
+      netty:
+        boss-count: 1
+        worker-count: 4
+        keep-alive: true
+        backlog: 100
 
 logging:
-  config: classpath:logback-spring.xml 
+  config: classpath:logback-spring.xml
+  level:
+    com.maxvision: DEBUG
+    org.springframework: INFO 
