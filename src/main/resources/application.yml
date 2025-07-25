@@ -2,7 +2,7 @@ spring:
   application:
     name: lock-sdk-demo
   datasource:
-    url: jdbc:postgresql://localhost:5432/balises_db
+    url: jdbc:postgresql://localhost:6078/balises_db
     username: ynnov
     password: Ynnov2025Fleet
     driver-class-name: org.postgresql.Driver
