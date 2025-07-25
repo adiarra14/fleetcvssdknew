@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class MaxvisionConfig {
 
-    @Bean
+    @Bean(initMethod = "init")
     public LockSdkConfig lockSdkConfig() {
         return new LockSdkConfig();
     }
