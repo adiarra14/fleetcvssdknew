@@ -4,7 +4,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/balises_db
     username: ynnov
-    password: Ynn0v@2025#Fleet
+    password: Ynnov2025Fleet
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:

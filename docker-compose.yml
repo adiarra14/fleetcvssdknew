@@ -4,7 +4,7 @@ services:
     container_name: postgres-balises
     environment:
       POSTGRES_USER: ynnov
-      POSTGRES_PASSWORD: Ynn0v@2025#Fleet
+      POSTGRES_PASSWORD: Ynnov2025Fleet
       POSTGRES_DB: balises_db
     ports:
       - "5432:5432"
@@ -29,7 +29,7 @@ services:
       - MVGATEWAY_SERVERS_0_PORT=8910
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-balises:5432/balises_db
       - SPRING_DATASOURCE_USERNAME=ynnov
-      - SPRING_DATASOURCE_PASSWORD=Ynn0v@2025#Fleet
+      - SPRING_DATASOURCE_PASSWORD=Ynnov2025Fleet
     restart: unless-stopped
     networks:
       - lock-network
