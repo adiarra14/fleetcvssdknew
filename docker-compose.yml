@@ -1,6 +1,20 @@
 version: '3.8'
 
 services:
+  postgres-balises:
+    image: postgres:15
+    container_name: postgres-balises
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: lock_sdk_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - lock-network
+
   lock-sdk-app:
     build:
       context: .
@@ -8,16 +22,26 @@ services:
     image: sdkmaxvision1:latest
     container_name: sdkmaxvision1
     ports:
-      - "8080:8080"  # REST API port
-      - "8910:8910"  # Lock SDK port
+      - "8081:8080"  # Changed from 8080 to 8081 for REST API
+      - "8911:8910"  # Changed from 8910 to 8911 for Lock SDK
     volumes:
       - ./logs:/app/logs
     environment:
       - SPRING_PROFILES_ACTIVE=prod
+      - SERVER_PORT=8080
+      - MVGATEWAY_SERVERS_0_PORT=8910
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-balises:5432/lock_sdk_db
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
     restart: unless-stopped
     networks:
       - lock-network
+    depends_on:
+      - postgres-balises
 
 networks:
   lock-network:
-    driver: bridge 
+    driver: bridge
+
+volumes:
+  postgres_data: 
